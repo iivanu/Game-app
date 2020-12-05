@@ -8,18 +8,17 @@
 
 /* Begin PBXBuildFile section */
 		9936F43F257BB5060012FAE4 /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9936F43E257BB5060012FAE4 /* DataModel.swift */; };
-		9936F443257BBFD60012FAE4 /* DetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9936F442257BBFD60012FAE4 /* DetailTableViewController.swift */; };
 		998C4C82257BB0E500EEE707 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998C4C81257BB0E500EEE707 /* AppDelegate.swift */; };
 		998C4C84257BB0E500EEE707 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998C4C83257BB0E500EEE707 /* SceneDelegate.swift */; };
 		998C4C86257BB0E500EEE707 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998C4C85257BB0E500EEE707 /* ViewController.swift */; };
 		998C4C89257BB0E500EEE707 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 998C4C87257BB0E500EEE707 /* Main.storyboard */; };
 		998C4C8B257BB0E600EEE707 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 998C4C8A257BB0E600EEE707 /* Assets.xcassets */; };
 		998C4C8E257BB0E600EEE707 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 998C4C8C257BB0E600EEE707 /* LaunchScreen.storyboard */; };
+		99DB7A34257BD879002E56D1 /* FilterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99DB7A33257BD879002E56D1 /* FilterTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		9936F43E257BB5060012FAE4 /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
-		9936F442257BBFD60012FAE4 /* DetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTableViewController.swift; sourceTree = "<group>"; };
 		998C4C7E257BB0E500EEE707 /* Game app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Game app.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		998C4C81257BB0E500EEE707 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		998C4C83257BB0E500EEE707 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -28,6 +27,7 @@
 		998C4C8A257BB0E600EEE707 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		998C4C8D257BB0E600EEE707 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		998C4C8F257BB0E600EEE707 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		99DB7A33257BD879002E56D1 /* FilterTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,9 +63,9 @@
 				998C4C81257BB0E500EEE707 /* AppDelegate.swift */,
 				998C4C83257BB0E500EEE707 /* SceneDelegate.swift */,
 				998C4C85257BB0E500EEE707 /* ViewController.swift */,
-				9936F442257BBFD60012FAE4 /* DetailTableViewController.swift */,
 				9936F43E257BB5060012FAE4 /* DataModel.swift */,
 				998C4C87257BB0E500EEE707 /* Main.storyboard */,
+				99DB7A33257BD879002E56D1 /* FilterTableViewController.swift */,
 				998C4C8A257BB0E600EEE707 /* Assets.xcassets */,
 				998C4C8C257BB0E600EEE707 /* LaunchScreen.storyboard */,
 				998C4C8F257BB0E600EEE707 /* Info.plist */,
@@ -144,10 +144,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				998C4C86257BB0E500EEE707 /* ViewController.swift in Sources */,
-				9936F443257BBFD60012FAE4 /* DetailTableViewController.swift in Sources */,
 				9936F43F257BB5060012FAE4 /* DataModel.swift in Sources */,
 				998C4C82257BB0E500EEE707 /* AppDelegate.swift in Sources */,
 				998C4C84257BB0E500EEE707 /* SceneDelegate.swift in Sources */,
+				99DB7A34257BD879002E56D1 /* FilterTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

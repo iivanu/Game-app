@@ -25,6 +25,6 @@ struct Game: Codable {
     var added: Int
 }
 
-struct AllData: Codable {
+struct JSONdata: Codable {
     var results = [Genre]()
 }

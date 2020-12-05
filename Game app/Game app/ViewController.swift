@@ -6,27 +6,54 @@
 //
 
 import UIKit
+import SafariServices
 
-class ViewController: UITableViewController {
+class ViewController: UITableViewController, ReturnDataDelegate {
 
     var results = [Genre]()
-    var selected_genre: String? = nil
+    var selectedGenres = [Genre]()
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Genres"
+        title = "Selected genres"
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Settings", style: .plain, target: self, action: #selector(filterItems))
         fetchData()
         loadData()
-        if selected_genre != nil {
-            for genre in results {
-                if genre.name == selected_genre {
-                    if let vc = storyboard?.instantiateViewController(withIdentifier: "Detail") as? DetailTableViewController {
-                        vc.genre = genre
-                        navigationController?.pushViewController(vc, animated: true)
-                    }
-                }
-                
-            }
+        if selectedGenres.count == 0 {
+            filterItems()
+        } else {
+            tableView.reloadData()
         }
+        
+    }
+    
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        selectedGenres.count
+    }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return selectedGenres[section].games.count
+    }
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return selectedGenres[section].name
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        let game = selectedGenres[indexPath.section].games[indexPath.row].name
+        cell.textLabel?.text = game
+        return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let game = selectedGenres[indexPath.section].games[indexPath.row].name
+        guard let url = URL(string: "https://www.google.com/search?q=\(game.replacingOccurrences(of: " ", with: "+"))") else { return }
+        let config = SFSafariViewController.Configuration()
+        config.barCollapsingEnabled = true
+        config.entersReaderIfAvailable = false
+        
+        let safariViewController = SFSafariViewController.init(url: url, configuration: config)
+        self.present(safariViewController, animated: true, completion: nil)
     }
     
     func fetchData() {
@@ -40,53 +67,46 @@ class ViewController: UITableViewController {
 
     func parse(json: Data) {
         let decoder = JSONDecoder()
-        if let jsonPetitions = try? decoder.decode(AllData.self, from: json) {
-            results = jsonPetitions.results
-            print(results[1].games[1].name)
+        if let jsonData = try? decoder.decode(JSONdata.self, from: json) {
+            results = jsonData.results
         }
     }
     
-    
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return results.count
-    }
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        let genre = results[indexPath.row]
-        cell.textLabel?.text = genre.name
-        return cell
-    }
-    
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        selected_genre = results[indexPath.row].name
+    func returnData(filteredItems: [Genre]) {
+        selectedGenres = filteredItems
         saveData()
-        if let vc = storyboard?.instantiateViewController(withIdentifier: "Detail") as? DetailTableViewController {
-            vc.genre = results[indexPath.row]
-            navigationController?.pushViewController(vc, animated: true)
-        }
-    }
+        tableView.reloadData()
+     }
     
     func loadData() {
         let defaults = UserDefaults.standard
-        guard let selectedgenre = defaults.object(forKey: "selectedgenre") as? Data else {
+        guard let dataToLoad = defaults.object(forKey: "selectedgenres") as? Data else {
             return
         }
         
         do {
-            self.selected_genre = try JSONDecoder().decode(String.self, from: selectedgenre)
+            self.selectedGenres = try JSONDecoder().decode([Genre].self, from: dataToLoad)
         } catch {
-            print("Failed to load recent links - \(error.localizedDescription)")
+            print("Failed to load selected genres - \(error.localizedDescription)")
         }
     }
     
     func saveData() {
-        guard let selectedgenre = try? JSONEncoder().encode(self.selected_genre) else {
-            print("Failed to save genre.")
+        guard let dataToSave = try? JSONEncoder().encode(self.selectedGenres) else {
+            print("Failed to save genres.")
             return
         }
         
         let defaults = UserDefaults.standard
-        defaults.set(selectedgenre, forKey: "selectedgenre")
+        defaults.set(dataToSave, forKey: "selectedgenres")
+    }
+    
+    @objc func filterItems() {
+        guard let vc = storyboard?.instantiateViewController(identifier: "Filter") as? FilterTableViewController else {
+            return
+        }
+        vc.items = results
+        vc.returnDataDelegate = self
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }
