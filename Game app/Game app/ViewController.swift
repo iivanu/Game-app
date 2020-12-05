@@ -8,45 +8,45 @@
 import UIKit
 import SafariServices
 
-class ViewController: UITableViewController, ReturnDataDelegate {
+class ViewController: UITableViewController, FilterTableViewControllerDelegate {
 
     var results = [Genre]()
     var selectedGenres = [Genre]()
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Selected genres"
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Settings", style: .plain, target: self, action: #selector(filterItems))
-        fetchData()
-        loadData()
-        if selectedGenres.count == 0 {
-            filterItems()
+        self.title = "Selected genres"
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Settings", style: .plain, target: self, action: #selector(filterItems))
+        self.fetchData()
+        self.loadData()
+        if self.selectedGenres.count == 0 {
+            self.filterItems()
         } else {
-            tableView.reloadData()
+            self.tableView.reloadData()
         }
         
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        selectedGenres.count
+        return self.selectedGenres.count
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return selectedGenres[section].games.count
+        return self.selectedGenres[section].games.count
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return selectedGenres[section].name
+        return self.selectedGenres[section].name
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        let game = selectedGenres[indexPath.section].games[indexPath.row].name
+        let cell = self.tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        let game = self.selectedGenres[indexPath.section].games[indexPath.row].name
         cell.textLabel?.text = game
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let game = selectedGenres[indexPath.section].games[indexPath.row].name
+        let game = self.selectedGenres[indexPath.section].games[indexPath.row].name
         guard let url = URL(string: "https://www.google.com/search?q=\(game.replacingOccurrences(of: " ", with: "+"))") else { return }
         let config = SFSafariViewController.Configuration()
         config.barCollapsingEnabled = true
@@ -68,14 +68,14 @@ class ViewController: UITableViewController, ReturnDataDelegate {
     func parse(json: Data) {
         let decoder = JSONDecoder()
         if let jsonData = try? decoder.decode(JSONdata.self, from: json) {
-            results = jsonData.results
+            self.results = jsonData.results
         }
     }
     
     func returnData(filteredItems: [Genre]) {
-        selectedGenres = filteredItems
-        saveData()
-        tableView.reloadData()
+        self.selectedGenres = filteredItems
+        self.saveData()
+        self.tableView.reloadData()
      }
     
     func loadData() {
@@ -106,7 +106,7 @@ class ViewController: UITableViewController, ReturnDataDelegate {
             return
         }
         vc.items = results
-        vc.returnDataDelegate = self
+        vc.delegate = self
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }
