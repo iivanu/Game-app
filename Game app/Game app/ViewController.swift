@@ -23,7 +23,6 @@ class ViewController: UITableViewController, FilterTableViewControllerDelegate {
         } else {
             self.tableView.reloadData()
         }
-        
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -87,11 +86,12 @@ class ViewController: UITableViewController, FilterTableViewControllerDelegate {
         let decoder = JSONDecoder()
         if let jsonData = try? decoder.decode(JSONdata.self, from: json) {
             self.results = jsonData.results
+            results.sort(by: { $0.name < $1.name })
         }
     }
     
     func returnData(filteredItems: [Genre]) {
-        self.selectedGenres = filteredItems
+        self.selectedGenres = filteredItems.sorted(by: { $0.name < $1.name })
         self.saveData()
         self.tableView.reloadData()
      }
