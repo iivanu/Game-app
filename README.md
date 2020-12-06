@@ -13,6 +13,7 @@ The app has 3 screens:
 
 When you launch app for the first time, you will be redirected to the list of genres screen.
 There you can select multiple genres, based on your interest. When you pick your genres press Done.
+You can always change genres in setting menu.
 After that, screen with list of games from selected genre will be shown. You can press on any game
 from the list, to show more informations about it. Game info is also live fetched from the API.
 Game info consists of: Game name, release date, picture and description.
@@ -20,5 +21,5 @@ Game info consists of: Game name, release date, picture and description.
 # Screenshots
 Game list                  |Genres list                |Game info  
 :-------------------------:|:-------------------------:|:------------------------------:
-![](https://i.imgur.com/xgcT7JX.png)  |  ![](https://i.imgur.com/3GTxD46.png) |  ![](https://i.imgur.com/ftc3rEK.png)
+![](https://i.imgur.com/tT0HGVX.png)  |  ![](https://i.imgur.com/TXXRGkl.png) |  ![](https://i.imgur.com/4D39KlS.png)
   
