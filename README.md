@@ -4,6 +4,10 @@ Design is made using storyboard, consisting of the elements: TableViewController
 Text Label and Text View.
 For using app, you need internet connection because app is fetching data from RAWG database.
 
+# Compatibility
+Game is compatible with iPhone and iPad devices.
+Tested on iOS 14.2 and XCode 12.2.
+Tested on iPhone Xs Max.
 
 # Usage
 The app has 3 screens:
