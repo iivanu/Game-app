@@ -9,9 +9,9 @@ import UIKit
 import SafariServices
 
 class ViewController: UITableViewController, FilterTableViewControllerDelegate {
-
     var results = [Genre]()
     var selectedGenres = [Genre]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Selected genres"
@@ -123,6 +123,7 @@ class ViewController: UITableViewController, FilterTableViewControllerDelegate {
         guard let vc = storyboard?.instantiateViewController(identifier: "Filter") as? FilterTableViewController else {
             return
         }
+        
         vc.items = results
         vc.delegate = self
         self.navigationController?.pushViewController(vc, animated: true)
