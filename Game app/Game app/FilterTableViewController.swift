@@ -34,7 +34,19 @@ class FilterTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        return self.filteredItems.append(items[indexPath.row])
+        if !self.filteredItems.contains(where: { filteredItems in
+            filteredItems.name == items[indexPath.row].name
+        }) {
+            filteredItems.append(items[indexPath.row])
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        if let index = self.filteredItems.firstIndex(where: { filteredItems in
+            filteredItems.name == items[indexPath.row].name
+        }) {
+            filteredItems.remove(at: index)
+        }
     }
     
     @objc func applyFilter() {

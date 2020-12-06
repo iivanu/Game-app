@@ -16,7 +16,7 @@ class ViewController: UITableViewController, FilterTableViewControllerDelegate {
         super.viewDidLoad()
         self.title = "Selected genres"
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Settings", style: .plain, target: self, action: #selector(filterItems))
-        self.fetchData()
+        self.fetchDataForGenres()
         self.loadData()
         if self.selectedGenres.count == 0 {
             self.filterItems()
@@ -46,26 +46,44 @@ class ViewController: UITableViewController, FilterTableViewControllerDelegate {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let game = self.selectedGenres[indexPath.section].games[indexPath.row].name
-        guard let url = URL(string: "https://www.google.com/search?q=\(game.replacingOccurrences(of: " ", with: "+"))") else { return }
-        let config = SFSafariViewController.Configuration()
-        config.barCollapsingEnabled = true
-        config.entersReaderIfAvailable = false
+        let game_id = self.selectedGenres[indexPath.section].games[indexPath.row].id
+        guard let game_data = self.fetchDataForGame(game_id: game_id) else { return }
         
-        let safariViewController = SFSafariViewController.init(url: url, configuration: config)
-        self.present(safariViewController, animated: true, completion: nil)
+        guard let vc = storyboard?.instantiateViewController(identifier: "Game") as? GameViewController else {
+            return
+        }
+        vc.gameData = game_data
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
-    func fetchData() {
-        if let url = k_URL {
+    func fetchDataForGame(game_id: Int) -> GameData? {
+        if let url = URL(string: "https://api.rawg.io/api/games/\(game_id)?key=\(k_token)") {
             if let data = try? Data(contentsOf: url) {
-                parse(json: data)
+                return parseDataForGame(json: data)
+            }
+        }
+        return nil
+    }
+    
+    func fetchDataForGenres() {
+        if let url = URL(string: k_URL + k_token) {
+            if let data = try? Data(contentsOf: url) {
+                parseDataForGenres(json: data)
                 return
             }
         }
     }
-
-    func parse(json: Data) {
+    
+    func parseDataForGame(json: Data) -> GameData? {
+        let decoder = JSONDecoder()
+        if let jsonData = try? decoder.decode(GameData.self, from: json) {
+            return jsonData
+        }
+        
+        return nil
+    }
+    
+    func parseDataForGenres(json: Data) {
         let decoder = JSONDecoder()
         if let jsonData = try? decoder.decode(JSONdata.self, from: json) {
             self.results = jsonData.results

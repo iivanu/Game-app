@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -64,6 +65,69 @@
             </objects>
             <point key="canvasLocation" x="2012" y="132"/>
         </scene>
+        <!--Game View Controller-->
+        <scene sceneID="59m-ME-sCA">
+            <objects>
+                <viewController storyboardIdentifier="Game" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Vbg-I9-uod" customClass="GameViewController" customModule="Game_app" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5zR-EG-pAx">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6OI-Rw-P7E">
+                                <rect key="frame" x="0.0" y="54" width="414" height="37"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="31"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="2Zk-fL-ava">
+                                <rect key="frame" x="10" y="362" width="394" height="500"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <mutableString key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8pJ-Bk-QBT">
+                                <rect key="frame" x="10" y="321" width="41.5" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5qn-bQ-HH6">
+                                <rect key="frame" x="0.0" y="111" width="414" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="ShE-iE-gOS"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="RN6-x3-L3b"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="8pJ-Bk-QBT" firstAttribute="leading" secondItem="RN6-x3-L3b" secondAttribute="leading" constant="10" id="A7e-c2-Px7"/>
+                            <constraint firstItem="2Zk-fL-ava" firstAttribute="leading" secondItem="RN6-x3-L3b" secondAttribute="leading" constant="10" id="CU3-oj-cx3"/>
+                            <constraint firstItem="6OI-Rw-P7E" firstAttribute="leading" secondItem="RN6-x3-L3b" secondAttribute="leading" id="OUn-ah-MTp"/>
+                            <constraint firstItem="RN6-x3-L3b" firstAttribute="bottom" secondItem="2Zk-fL-ava" secondAttribute="bottom" id="RPJ-Em-erN"/>
+                            <constraint firstItem="8pJ-Bk-QBT" firstAttribute="top" secondItem="5qn-bQ-HH6" secondAttribute="bottom" constant="10" id="Ve4-MG-BGQ"/>
+                            <constraint firstItem="5qn-bQ-HH6" firstAttribute="leading" secondItem="RN6-x3-L3b" secondAttribute="leading" id="iQr-MW-l8x"/>
+                            <constraint firstItem="6OI-Rw-P7E" firstAttribute="top" secondItem="RN6-x3-L3b" secondAttribute="top" constant="10" id="log-Kr-7CW"/>
+                            <constraint firstItem="RN6-x3-L3b" firstAttribute="trailing" secondItem="2Zk-fL-ava" secondAttribute="trailing" constant="10" id="lrv-a1-mFp"/>
+                            <constraint firstItem="5qn-bQ-HH6" firstAttribute="top" secondItem="6OI-Rw-P7E" secondAttribute="bottom" constant="20" id="nLc-dV-O9B"/>
+                            <constraint firstItem="RN6-x3-L3b" firstAttribute="trailing" secondItem="5qn-bQ-HH6" secondAttribute="trailing" id="ukX-CH-VzQ"/>
+                            <constraint firstItem="RN6-x3-L3b" firstAttribute="trailing" secondItem="6OI-Rw-P7E" secondAttribute="trailing" id="wjF-dw-yTd"/>
+                            <constraint firstItem="2Zk-fL-ava" firstAttribute="top" secondItem="8pJ-Bk-QBT" secondAttribute="bottom" constant="20" id="zNQ-ax-16W"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="GameDescriptionBox" destination="2Zk-fL-ava" id="zKv-Iu-cG5"/>
+                        <outlet property="GameImageView" destination="5qn-bQ-HH6" id="HoX-3c-3hh"/>
+                        <outlet property="GameNameLabel" destination="6OI-Rw-P7E" id="4Jg-5l-B5R"/>
+                        <outlet property="GameReleaseDateLabel" destination="8pJ-Bk-QBT" id="CJo-0q-uQq"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mHp-ZR-T2C" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2953.6231884057975" y="131.91964285714286"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="xES-Up-7WA">
             <objects>
@@ -84,6 +148,9 @@
         </scene>
     </scenes>
     <resources>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
