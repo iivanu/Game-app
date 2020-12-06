@@ -1,11 +1,11 @@
 # Game app
-Simple app based on RAWG video game database, completely written in Swift 5.3.
-Design is made using storyboard, consisting of the elements: TableViewController, ImageView,
+Simple app based on the RAWG video game database, completely written in Swift 5.3.
+The design is made using storyboard, consisting of the elements: TableViewController, ImageView,
 Text Label and Text View.
-For using app, you need internet connection because app is fetching data from RAWG database.
+For using the app, you need internet connection because the app is fetching data from the RAWG database.
 
 # Compatibility
-Game is compatible with iPhone and iPad devices.
+The game is compatible with iPhone and iPad devices.
 Tested on iOS 14.2 and XCode 12.2.
 Tested on iPhone Xs Max.
 
@@ -15,12 +15,11 @@ The app has 3 screens:
 2. List of genres for filtering
 3. Informations about selected game
 
-When you launch app for the first time, you will be redirected to the list of genres screen.
-There you can select multiple genres, based on your interest. When you pick your genres press Done.
-You can always change genres in setting menu.
-After that, screen with list of games from selected genre will be shown. You can press on any game
-from the list, to show more informations about it. Game info is also live fetched from the API.
-Game info consists of: Game name, release date, picture and description.
+When you launch app for the first time, you will be redirected to the "List of genres" screen.
+There you can select multiple game genres, based on your interests. When you're done selecting press "Done".
+You can always change your choice in the "Settings" menu.
+After that, a list of corresponding games will appear on the screen. Then you can select any game by clicking on it and that will show more information about the game itself. The game info is also live fetched from the API.
+Game info consists of: Game name, Release date, Picture and Description.
 
 # Screenshots
 Game list                  |Genres list                |Game info  
