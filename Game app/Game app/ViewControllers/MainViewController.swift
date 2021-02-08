@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  MainViewController.swift
 //  Game app
 //
 //  Created by Ivan Ivanušić on 05.12.2020..
@@ -8,7 +8,7 @@
 import UIKit
 import SafariServices
 
-class ViewController: UITableViewController, FilterTableViewControllerDelegate {
+class MainViewController: UITableViewController, FilterTableViewControllerDelegate {
     var results = [Genre]()
     var selectedGenres = [Genre]()
     
@@ -41,6 +41,7 @@ class ViewController: UITableViewController, FilterTableViewControllerDelegate {
         let cell = self.tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         let game = self.selectedGenres[indexPath.section].games[indexPath.row].name
         cell.textLabel?.text = game
+        
         return cell
     }
     
@@ -125,7 +126,8 @@ class ViewController: UITableViewController, FilterTableViewControllerDelegate {
         }
         
         vc.items = results
+        vc.filteredItems = selectedGenres
         vc.delegate = self
-        self.navigationController?.pushViewController(vc, animated: true)
+        self.navigationController?.present(vc, animated: true)
     }
 }
