@@ -16,7 +16,7 @@ The app has 3 screens:
 3. Informations about selected game
 
 When you launch app for the first time, you will be redirected to the "List of genres" screen.
-There you can select multiple game genres, based on your interests. When you're done selecting press "Done".
+There you can select multiple game genres, based on your interests. When you're done selecting dismiss view.
 You can always change your choice in the "Settings" menu.
 After that, a list of corresponding games will appear on the screen. Then you can select any game by clicking on it and that will show more information about the game itself. The game info is also live fetched from the API.
 Game info consists of: Game name, Release date, Picture and Description.
@@ -24,5 +24,5 @@ Game info consists of: Game name, Release date, Picture and Description.
 # Screenshots
 Game list                  |Genres list                |Game info  
 :-------------------------:|:-------------------------:|:------------------------------:
-![](https://i.imgur.com/tT0HGVX.png)  |  ![](https://i.imgur.com/TXXRGkl.png) |  ![](https://i.imgur.com/4D39KlS.png)
+![](https://i.imgur.com/tT0HGVX.png)  |  ![](https://i.imgur.com/tRSHID4.png) |  ![](https://i.imgur.com/4D39KlS.png)
   
